@@ -1,0 +1,311 @@
+{
+  "id": "bd2db220-ba3d-4db1-b997-34789109c98b",
+  "revision": 0,
+  "last_node_id": 10,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "GetVideoComponents",
+      "pos": [
+        1249.7255557944557,
+        -293.73145568880557
+      ],
+      "size": [
+        193.530859375,
+        66
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetVideoComponents"
+      }
+    },
+    {
+      "id": 6,
+      "type": "SaveVideo",
+      "pos": [
+        842.8530922000152,
+        -302.2437976858039
+      ],
+      "size": [
+        374,
+        596.6666666666667
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 10
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/ComfyUI",
+        "auto",
+        "auto"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "Mesh2MotionExplore",
+      "pos": [
+        -616.5264901459637,
+        -293.55976388607286
+      ],
+      "size": [
+        1390.4057940001144,
+        1793.7109420637512
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            9,
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Mesh2MotionExplore",
+        "mesh2motion_timeline": {
+          "animationIndex": 119,
+          "modelAnimOffset": 0,
+          "modelAnimSpeed": 0.5853658536585366,
+          "cameraSpeed": 1,
+          "modelAnimLoop": 1
+        },
+        "mesh2motion_skeleton": "human",
+        "mesh2motion_panel_state": {
+          "right": "tune",
+          "left": "skeleton"
+        },
+        "mesh2motion_camera_preset": "basic-moves/pan_180_degree.json",
+        "mesh2motion_preset_tuning": {
+          "basic-moves/pull_fast.json": {
+            "fovScale": 2,
+            "yawDegrees": 0,
+            "rollDegrees": 19
+          }
+        }
+      },
+      "widgets_values": [
+        false,
+        false,
+        false,
+        false,
+        960,
+        1280,
+        24,
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": 9,
+      "type": "PreviewImage",
+      "pos": [
+        1460.7679516249775,
+        -302.4497807057199
+      ],
+      "size": [
+        219.20000000000027,
+        258
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1721.2498768394046,
+        -305.22051473125975
+      ],
+      "size": [
+        359.4596059421435,
+        661.1201068236769
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 14
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        },
+        {
+          "name": "frame_rate",
+          "type": "FLOAT",
+          "widget": {
+            "name": "frame_rate"
+          },
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": [
+        8,
+        0,
+        "meth2motion",
+        "video/webm",
+        false,
+        true
+      ]
+    }
+  ],
+  "links": [
+    [
+      9,
+      8,
+      1,
+      3,
+      0,
+      "VIDEO"
+    ],
+    [
+      10,
+      8,
+      1,
+      6,
+      0,
+      "VIDEO"
+    ],
+    [
+      12,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      3,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      3,
+      1,
+      10,
+      1,
+      "AUDIO"
+    ],
+    [
+      15,
+      3,
+      2,
+      10,
+      4,
+      "FLOAT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.14032343444479822,
+      "offset": [
+        4780.1963293746685,
+        2290.2941589010743
+      ]
+    },
+    "frontendVersion": "1.42.14"
+  },
+  "version": 0.4
+}
